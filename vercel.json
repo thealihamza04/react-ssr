@@ -3,5 +3,10 @@
   "buildCommand": "npm run build",
   "routes": [
     { "src": "/(.*)", "dest": "/api/index" }
-  ]
+  ],
+  "functions": {
+    "api/**/*.js": {
+      "includeFiles": "dist/**"
+    }
+  }
 }

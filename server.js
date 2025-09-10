@@ -1,14 +1,20 @@
 import fs from 'node:fs/promises'
 import express from 'express'
+import path from 'node:path'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 
 // Constants
 const isProduction = process.env.NODE_ENV === 'production'
 const port = process.env.PORT || 5173
 const base = process.env.BASE || '/'
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const resolve = (...p) => path.resolve(__dirname, ...p)
+const clientDist = resolve('dist', 'client')
+const serverDist = resolve('dist', 'server')
 
 // Cached production assets
 const templateHtml = isProduction
-    ? await fs.readFile('./dist/client/index.html', 'utf-8')
+    ? await fs.readFile(path.join(clientDist, 'index.html'), 'utf-8')
     : ''
 
 // Create http server
@@ -29,7 +35,7 @@ if (!isProduction) {
     const compression = (await import('compression')).default
     const sirv = (await import('sirv')).default
     app.use(compression())
-    app.use(base, sirv('./dist/client', { extensions: [] }))
+    app.use(base, sirv(clientDist, { extensions: [] }))
 }
 
 // Serve HTML for all routes (Express v5: no '*' path)
@@ -48,8 +54,9 @@ app.use(async (req, res) => {
             render = (await vite.ssrLoadModule('/src/entry-server.tsx')).render
         } else {
             template = templateHtml
-            // Vite outputs a JS bundle for SSR build
-            render = (await import('./dist/server/entry-server.js')).render
+            // Vite outputs a JS bundle for SSR build; import via file URL
+            const entryUrl = pathToFileURL(path.join(serverDist, 'entry-server.js')).href
+            render = (await import(entryUrl)).render
         }
 
         const rendered = await render(url)

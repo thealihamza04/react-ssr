@@ -66,7 +66,11 @@ app.use('*all', async (req, res) => {
     }
 })
 
-// Start http server
-app.listen(port, () => {
-    console.log(`Server started at http://localhost:${port}`)
-})
+// Start http server locally; on Vercel we export the app
+if (!process.env.VERCEL) {
+    app.listen(port, () => {
+        console.log(`Server started at http://localhost:${port}`)
+    })
+}
+
+export default app

@@ -1,17 +1,20 @@
 {
   "version": 2,
+  "buildCommand": "npm run build",
   "builds": [
-    { "src": "server.js", "use": "@vercel/node" },
+    { "src": "api/index.js", "use": "@vercel/node" },
     { "src": "dist/client/**", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/assets/(.*)", "dest": "/dist/client/assets/$1" },
     { "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|webp|woff2?|ttf|otf|map))", "dest": "/dist/client/$1" },
     { "src": "/favicon.ico", "dest": "/dist/client/favicon.ico" },
-    { "src": "/(.*)", "dest": "/server.js" }
+    { "src": "/(.*)", "dest": "/api/index" }
   ],
   "functions": {
-    "server.js": { "runtime": "nodejs20.x" }
+    "api/index.js": {
+      "runtime": "nodejs20.x",
+      "includeFiles": "dist/**"
+    }
   }
 }
-

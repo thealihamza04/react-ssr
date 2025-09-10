@@ -1,60 +1,9 @@
 # React + Vite SSR (Express + React Router v7)
 
-<div align="start">
 
 Production-ready Server-Side Rendering setup for React using Vite, Express, and React Router v7
 
-[ Quick Start](#quick-start)  
-[ Documentation](#documentation)  
-[ Features](#what-you-get)  
-[ Deploy](#vercel-deployment)
 
-</div>
-
----
-
-## What You Get
-
-| Feature | Description |
-|---------|-------------|
-| React 19 + Router v7 | Latest React with React Router v7 for client + server rendering |
-| Vite Dev Server | Lightning-fast development with HMR in middleware mode |
-| Express SSR | Production-ready Express server for dev and production |
-| Optimized Build | Separate client (`dist/client`) and server (`dist/server`) bundles |
-| Vercel Ready | Serverless deployment with proper routing configuration |
-| Fast Setup | Copy-paste templates to add SSR to any React + Vite project |
-
----
-
-## Quick Start
-
-### Prerequisites
-- **Node.js** 20.x or newer (React Router v7 requirement)
-- **npm** 9+ (or pnpm/yarn equivalent)
-
-### Installation & Development
-```bash
-# Clone and install
-git clone <your-repo-url>
-cd react-vite-ssr
-npm install
-
-# Start development server
-npm run dev
-
-# Open http://localhost:5173
-```
-
-### Production Build
-```bash
-# Build for production
-npm run build
-
-# Run production server locally
-NODE_ENV=production node server
-```
-
----
 
 ## Project Structure
 
@@ -300,14 +249,6 @@ export { default } from "../server.js";
 
 ---
 
-## Documentation
-
-- [React Router v7 Docs](https://reactrouter.com/)
-- [Vite SSR Guide](https://vitejs.dev/guide/ssr.html)
-- [Express.js Documentation](https://expressjs.com/)
-- [Vercel Deployment](https://vercel.com/docs)
-
----
 
 ## Contributing
 
@@ -316,12 +257,6 @@ export { default } from "../server.js";
 3. Commit your changes
 4. Push to the branch
 5. Open a Pull Request
-
----
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 

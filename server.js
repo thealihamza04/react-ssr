@@ -32,8 +32,8 @@ if (!isProduction) {
     app.use(base, sirv('./dist/client', { extensions: [] }))
 }
 
-// Serve HTML
-app.use('*all', async (req, res) => {
+// Serve HTML for all routes
+app.use('*', async (req, res) => {
     try {
         const url = req.originalUrl.replace(base, '')
 

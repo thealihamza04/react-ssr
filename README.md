@@ -260,10 +260,13 @@ export { default } from "../server.js";
 
 ---
 
-<div align="center">
+<div align="start">
 
-Made for the React community
+Made for the React community <br>
 
-[ Star this repo](.) • [🐛 Report Bug](.) • [💡 Request Feature](.)
+[⭐ Star this repo](https://github.com/thealihamza04/react-ssr) <br>
+[🐛 Report Bug](https://github.com/thealihamza04/react-ssr/issues/new?labels=bug&template=bug_report.md) <br>
+[💡 Request Feature](https://github.com/thealihamza04/react-ssr/issues/new?labels=enhancement&template=feature_request.md)
 
 </div>
+

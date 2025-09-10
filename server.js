@@ -48,7 +48,8 @@ app.use('*all', async (req, res) => {
             render = (await vite.ssrLoadModule('/src/entry-server.tsx')).render
         } else {
             template = templateHtml
-            render = (await import('./dist/server/entry-server.tsx')).render
+            // Vite outputs a JS bundle for SSR build
+            render = (await import('./dist/server/entry-server.js')).render
         }
 
         const rendered = await render(url)

@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "server.js", "use": "@vercel/node" },
+    { "src": "dist/client/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/assets/(.*)", "dest": "/dist/client/assets/$1" },
+    { "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|webp|woff2?|ttf|otf|map))", "dest": "/dist/client/$1" },
+    { "src": "/favicon.ico", "dest": "/dist/client/favicon.ico" },
+    { "src": "/(.*)", "dest": "/server.js" }
+  ],
+  "functions": {
+    "server.js": { "runtime": "nodejs20.x" }
+  }
+}
+

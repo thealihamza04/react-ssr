@@ -1,3 +1,4 @@
+# it have some major issues that we are trying to fix
 # React + Vite SSR (Express + React Router v7)
 
 
